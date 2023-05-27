@@ -13,5 +13,4 @@ class LogicServiceImpl(
     override fun processRequest(request: RequestDto): DecisionDto {
         return decisionByRules.calculateDecision(request)
     }
-
 }

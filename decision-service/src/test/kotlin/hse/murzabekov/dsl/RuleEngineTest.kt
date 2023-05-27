@@ -8,11 +8,11 @@ class RuleEngineTest {
 
     @Test
     fun `add a rule to rule engine and fire`() {
-        val rule1 = rule<User>("com.networknt.rule0001-1.0.0") {
-            name = "rule 0001"
+        val rule1 = rule<User>("1.0.0") {
+            name = "rule1"
             description = "This is the first rule for testing with one condition and one action"
             condition = {
-                it.firstName == "Steve" && it.lastName == "Hu"
+                it.firstName == "Sultan" && it.lastName == "Murzabekov"
             }
             action = {
                 println("Rule 1 is fired")
@@ -20,32 +20,32 @@ class RuleEngineTest {
             }
         }
         engine.addRule(rule1)
-        assertTrue(engine.fireRule("com.networknt.rule0001-1.0.0", User(firstName = "Steve", lastName = "Hu")))
+        assertTrue(engine.fireRule("1.0.0", User(firstName = "Sultan", lastName = "Murzabekov")))
     }
 
     @Test
     fun `add a rule set to rule engine and fire`() {
-        val user = User(firstName = "Steve", lastName = "Hu", activated = false)
+        val user = User(firstName = "Sultan", lastName = "Murzabekov", activated = false)
         val s = ruleSet<User> {
-            setId = "com.networknt.set001-1.0.0"
+            setId = "1.0.0"
             description = "this is the first set of rules"
             rules {
-                rule("com.networknt.r0001-1.0.0") {
-                    name = "rule 0001"
+                rule("1.0.0") {
+                    name = "rule1"
                     description = "This is the first rule for testing with one condition and one action"
                     condition = {
-                        it.firstName == "Steve" && it.lastName == "Hu"
+                        it.firstName == "Sultan" && it.lastName == "Murzabekov"
                     }
                     action = {
                         println("Rule 1 is fired")
                     }
                 }
-                rule("com.networknt.r0002-1.0.0") {
-                    name = "rule 0002"
+                rule("1.0.0") {
+                    name = "rule2"
                     description = "This is the second rule for testing with one condition and one action"
                     condition = or (
-                            withFirstName("Steve"),
-                            withLastName("Hu"),
+                            withFirstName("Sultan"),
+                            withLastName("Murzabekov"),
                             withGender(Gender.MALE)
                     )
                     action = {
@@ -55,7 +55,7 @@ class RuleEngineTest {
             }
         }
         engine.addRuleSet(s)
-        assertTrue(engine.fireRuleSet("com.networknt.set001-1.0.0", user))
+        assertTrue(engine.fireRuleSet("1.0.0", user))
     }
 
 
