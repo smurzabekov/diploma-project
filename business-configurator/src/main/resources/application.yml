@@ -1,0 +1,11 @@
+
+datasource:
+  jdbc-url: jdbc:postgresql://ep-winter-pond-255304.eu-central-1.aws.neon.tech/neondb
+  username: rkarabash
+  password: QzxAPaqy35Gi
+  maximum-pool-size: 5
+  minimum-idle: 1
+  idle-timeout: 20000
+  poolName: strategy-pool
+server:
+  port: 8090
