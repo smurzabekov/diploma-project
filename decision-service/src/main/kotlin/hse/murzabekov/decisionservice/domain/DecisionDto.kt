@@ -2,13 +2,13 @@ package hse.murzabekov.decisionservice.domain
 
 class DecisionDto {
     val actionsToDo: MutableList<Treatment> = mutableListOf()
-    var cost: Int = 0
+    var cost: Int = 10_000
 }
 
-data class Treatment(
-    val remedies: Remedy,
-    val surgery: Surgery?
-)
+class Treatment {
+    var remedies: Remedy? = null
+    var surgery: Surgery? = null
+}
 
 data class Remedy(
     var type: String? = null,
